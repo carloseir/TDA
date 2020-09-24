@@ -1,13 +1,14 @@
-CC = gcc
-CFLAGS = -I -Wall
-DEPS = Sequences.h files.h time_test_fibo.h
-OBJ = time_test_fibo.o Sequences.o files.o
+fibo.out: main.c Sequences.c files.c
+	gcc -g -o fibo.out main.c Sequences.c files.c
 
-%.o : %.c $(DEPS)
-	$(CC) -c -o $@ $< $(CFLAGS)
+main.o: main.c
+	gcc -g -c main.c
 
-time_test_fibo: $(OBJ)
-	$(CC) -o $@ $^ $(CFLAGS)
+Sequences.o: Sequences.c
+	gcc -g -c Sequences.c
+
+files.o: files.c
+	gcc -g -c files.c
 
 clean:
 	rm *.o
